@@ -6,6 +6,7 @@ Google Chrome Extension, which converts a SAML 2.0 assertion to AWS STS Keys (te
 # Table of Contents
 * [Why this Chrome Extension?](#why)
 * [Installation](#Installation)
+* [Troubleshooting](#Troubleshooting)
 * [Frequently Asked Question](#faq)
 
 ## <a name="why"></a>Why this Chrome Extension?
@@ -25,6 +26,21 @@ The Security Token Service (STS) from AWS provides an API action assumeRoleWithS
 6. symlink your aws credentials file to your download locations credentials file
   - `ln -s ~/Downloads/credentials ~/.aws/credentials`
 7. Enjoy!
+
+
+### Troubleshooting
+If your credentials are being downloaded as expected, yet the CLI isn't picking up the credentials the following steps may help:
+- List AWS CLI profiles:
+  `aws configure list-profiles`
+- List the current AWS CLI configuration data:
+  `aws configure list`
+  - The last 4 characters of `access_key` and `secret_key` should match your `aws_access_key_id` and `aws_secret_access_key` in the credentials file
+  - If `region` is not set, AWS CLI commands will fail saying __An error occurred (InvalidToken) when calling the <> operation: The provided token is malformed or otherwise invalid.__
+- Set region for current profile:
+  `aws configure`
+  - You can just press `ENTER` on the access key and secret key, both should be pre-populated
+  - The defualt region name should show: `[None]`. Change this to your default region: __us-gov-west-1__
+  - Press `ENTER` to leave the default output format as `[None]`
 
 ## <a name="faq"></a>FAQ: Frequently Asked Question
 1. How to check for errors in the extension?
