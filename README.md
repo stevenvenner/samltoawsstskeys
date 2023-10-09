@@ -1,15 +1,11 @@
 # SAML to AWS STS Keys Conversion
 Google Chrome Extension, which converts a SAML 2.0 assertion to AWS STS Keys (temporary credentials). Just log in to the AWS Web Management Console using your SAML IDP, and the Chrome Extension will fetch the SAML Assertion from the HTTP request. The SAML Assertion is then used to call the assumeRoleWithSAML API to create the temporary credentials. (AccessKeyId, SecretAccessKey and SessionToken).
 
-The Chrome Extension can be downloaded here:
-[Google Chrome Web Store](https://chrome.google.com/webstore/detail/ekniobabpcnfjgfbphhcolcinmnbehde/)
 
-> The source of this extension is also used as [extension](https://addons.mozilla.org/en-US/firefox/addon/saml-to-aws-sts-keys/) for Mozilla FireFox. For specific FireFox related questions you can get in touch with my awesome friend @gbvanrenswoude.
 
 # Table of Contents
 * [Why this Chrome Extension?](#why)
-* [Getting Started from source](#gettingstarted)
-* [Plugin Development Notes](#development)
+* [Installation](#Installation)
 * [Frequently Asked Question](#faq)
 
 ## <a name="why"></a>Why this Chrome Extension?
@@ -20,30 +16,15 @@ You run into trouble as soon as you want to execute some fancy scripts from your
 
 The Security Token Service (STS) from AWS provides an API action assumeRoleWithSAML. Using the SAML Assertion given by your IDP, the Chrome Extension will call this API action to fetch temporary credentials. (AccessKeyId, SecretAccessKey and SessionToken). This way, there is no need to create some anonymous user in AWS IAM used for executing scripts. This would be an absolute security nightmare since it is impossible to audit who did what. This Chrome Extension, however, will make it super easy for you to use your corporate identity for executing scripts calling AWS API.
 
-## <a name="gettingstarted"></a>Getting Started from source
+## <a name="Installation"></a>Installation
 1. Clone this repository
 2. Open Chrome and go to `chrome://extensions/`
 3. Enable Developer Mode
 4. Click on "Load unpacked extension..."
 5. Select the folder where you cloned this repository
-6. Enjoy!
-
-## <a name="development"></a>Plugin Development Notes
-Here are some important notes for development of this plugin.
-
-### AWS SDK with webpack
-The AWS SDK for Javascript is packaged with webpack. npm and webpack configuration is located in `lib/aws-sdk/build`.
-
-To install a specific version of an AWS SDK module, go into the build directory and run:
-```
-npm install --save --save-exact @aws-sdk/client-sts@3.209.0
-```
-
-To simply install the required node modules and build the sdk library required for the plugin:
-```
-npm install
-npm run build
-```
+6. symlink your aws credentials file to your download locations credentials file
+  - `ln -s ~/Downloads/credentials ~/.aws/credentials`
+7. Enjoy!
 
 ## <a name="faq"></a>FAQ: Frequently Asked Question
 1. How to check for errors in the extension?
