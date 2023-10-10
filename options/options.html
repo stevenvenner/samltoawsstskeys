@@ -12,16 +12,15 @@
   </div>
   <hr>
   
-  <div id="divInfo">
-    <p>Developed by prolane.org (Gerard Laan)</p>
-    <p>For help, please see README at the <a href="https://github.com/prolane/samltoawsstskeys/blob/master/README.md" target="_blank">project page on Github.com</a></p>
-  </div>
   
   <div id="divSettings">
     <div id="divFilename" class="setting-part">
       <label>Filename for writing the fetched AWS STS keys. File will be written to Chrome's download directory. Example filename: credentials</label>
       <br />
       <input type="text" name="FileName" id="FileName" size="40">
+      <li>It's recommended to symlink this file to your AWS credentials store, usually located at ./aws/credentials or %USERPROFILE%\.aws\credentials</li>
+      
+      <pre><span class="inner-pre" style="font-size: 14px">ln -s ~/Downloads/credentials ~/.aws/credentials</span></pre>
     </div>
 
     <div id="divSessionDuration" class="setting-part">
