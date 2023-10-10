@@ -1,21 +1,9 @@
 # SAML to AWS STS Keys Conversion
 Google Chrome Extension, which converts a SAML 2.0 assertion to AWS STS Keys (temporary credentials). Just log in to the AWS Web Management Console using your SAML IDP, and the Chrome Extension will fetch the SAML Assertion from the HTTP request. The SAML Assertion is then used to call the assumeRoleWithSAML API to create the temporary credentials. (AccessKeyId, SecretAccessKey and SessionToken).
 
+This extension can only download those credentials to Chrome's download folder, but if you symlink that file to you `.aws/credentials` as described below in the [Instructions](#Instructions), then everytime you log into AWS in your browser, your AWS CLI keys will be updated.
 
-
-# Table of Contents
-* [Why this Chrome Extension?](#why)
-* [Installation](#Installation)
-* [Troubleshooting](#Troubleshooting)
-* [Frequently Asked Question](#faq)
-
-## <a name="why"></a>Why this Chrome Extension?
-If you don't have any user administration setup within AWS Identity & Access Management (IAM) but instead rely on your corporate user directory, i.e. Microsoft Active Directory. Your company uses a SAML 2.0 Identity Provider (IDP) to log in to the AWS Web Management Console (Single Sign On).
-Then this Chrome Extension is for you!
-
-You run into trouble as soon as you want to execute some fancy scripts from your computer, which call the AWS API. When sending a request to the AWS API, you need credentials, meaning AccessKey and SecretKey. You can quickly generate these keys for each user in AWS IAM. However, since you don't have any users in AWS IAM and don't want to create users just for the sake of having an AccessKey and SecretKey, you are screwed. But there is a way to get temporary credentials specifically for your corporate identity.
-
-The Security Token Service (STS) from AWS provides an API action assumeRoleWithSAML. Using the SAML Assertion given by your IDP, the Chrome Extension will call this API action to fetch temporary credentials. (AccessKeyId, SecretAccessKey and SessionToken). This way, there is no need to create some anonymous user in AWS IAM used for executing scripts. This would be an absolute security nightmare since it is impossible to audit who did what. This Chrome Extension, however, will make it super easy for you to use your corporate identity for executing scripts calling AWS API.
+All credit to original author: https://github.com/prolane/samltoawsstskeys. This was tweaked slightly and repackaged to support AWS GovCloud.
 
 ## <a name="Installation"></a>Installation
 1. Clone this repository

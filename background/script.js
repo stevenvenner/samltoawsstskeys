@@ -25,10 +25,6 @@ chrome.storage.sync.get({
 // If so, show the user the changelog
 // var thisVersion = chrome.runtime.getManifest().version;
 chrome.runtime.onInstalled.addListener(function(details) {
-  if (details.reason == "install" || details.reason == "update") {
-    // Open a new tab to show changelog html page
-    chrome.tabs.create({ url: "../options/changelog.html" });
-  }
 });
 // Keep the extensions service worker alive
 keepServiceRunning();
