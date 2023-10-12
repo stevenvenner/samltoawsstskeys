@@ -23,6 +23,6 @@
     "downloads"
   ],
   "host_permissions": [
-    "<all_urls>"
+    "https://signin.aws.amazon.com/saml","https://signin.amazonaws-us-gov.com/saml"
   ]
 }
