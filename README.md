@@ -6,6 +6,12 @@ This extension can only download those credentials to Chrome's download folder, 
 All credit to original author: https://github.com/prolane/samltoawsstskeys. This was tweaked slightly and repackaged to support AWS GovCloud.
 
 ## <a name="Installation"></a>Installation
+1. [Add extension from Chrome Extension store](https://chrome.google.com/webstore/detail/saml-to-aws-sts-keys-conv/djjiojdghhcbkdfhjmmmkbgmoachckjf)
+2. symlink your aws credentials file to your download locations credentials file
+  - `ln -s ~/Downloads/credentials ~/.aws/credentials`
+
+
+##### Or add extension from source code
 1. Clone this repository
 2. Open Chrome and go to `chrome://extensions/`
 3. Enable Developer Mode
